@@ -1,0 +1,9 @@
+<h3>
+  <%= gravatar_for current_user%>
+  <%= current_user.name%>
+</h3>
+
+<%= link_to "Your Books", user_books_path(current_user.id), class: "btn btn-sm btn-primary"%>
+<%= link_to "Add Book", new_book_path, class: "btn btn-sm btn-primary" %>
+<%= link_to "All Reviews", reviews_path, class: "btn btn-sm btn-primary" %>
+<%= link_to "Add Review", new_user_review_path(current_user.id), class: "btn btn-sm btn-primary" %>
