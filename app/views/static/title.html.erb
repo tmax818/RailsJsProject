@@ -1,10 +1,12 @@
 <% provide(:title, "Books by Title") %>
-
+    <%= javascript_include_tag 'book'%>
 
 <h1>All Books by Title</h1>
 
-<% @books.each do |b| %>
+<div class="books"></div>
+
+<!-- <% @books.each do |b| %>
 <ul>
   <li><%= link_to b.title, book_path(b) %> By: <%= b.author_first %> <%= b.author_last %></li>
 </ul>
-<% end %>
+<% end %> -->
