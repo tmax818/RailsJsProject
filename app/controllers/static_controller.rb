@@ -5,6 +5,10 @@ class StaticController < ApplicationController
 
   def title
     @books = Book.order_by_title
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @books}
+    end
   end
 
   def author

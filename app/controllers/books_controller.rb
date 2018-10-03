@@ -5,6 +5,10 @@ class BooksController < ApplicationController
     if params[:user_id]
       @books = User.find(params[:user_id]).books
       flash.now[:danger] = "You haven't added any books yet!" if @books.empty?
+      respond_to do |format|
+        format.html {render :index}
+        format.json {render json: @books}
+      end
     end
   end
 
