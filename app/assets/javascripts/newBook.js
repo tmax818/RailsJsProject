@@ -16,8 +16,8 @@ let book = new NewBook();
 document.getElementById("book").addEventListener("submit", e => {
   e.preventDefault();
   book.title = title.value;
-  book.first = first.value;
-  book.last = last.value;
+  book.author_first = first.value;
+  book.author_last = last.value;
   book.review = review.value;
   console.log(book);
 });
