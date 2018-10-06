@@ -1,4 +1,6 @@
 <%= provide(:title, "#{current_user.name}'s Books") %>
+<%= javascript_include_tag 'books'%>
+
 
 <h1><%= current_user.name %>'s Books</h1>
 <% @books.each do |x| %>
@@ -15,3 +17,6 @@
     </div>
   </div>
 <% end %>
+
+<div id="books">
+</div>

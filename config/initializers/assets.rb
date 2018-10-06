@@ -13,5 +13,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w( application.js )
 Rails.application.config.assets.precompile += %w( book.js )
+Rails.application.config.assets.precompile += %w( books.js )
 Rails.application.config.assets.precompile += %w( newBook.js )
 Rails.application.config.assets.precompile += %w( review.js )
