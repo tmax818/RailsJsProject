@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :books, only: [:index]
-    resources :reviews, only: [:new, :create, :show]
+    resources :reviews, only: [:new, :create, :show, :index]
   end
 
   get 'auth/:provider/callback', to: 'sessions#create'
