@@ -35,6 +35,12 @@ class Review {
       .then(res => res.json())
       .then(json => this.createReview(json));
   }
+
+  fetchLength() {
+    fetch(`http://localhost:3000/reviews.json`)
+      .then(res => res.json())
+      .then(json => console.log(json.length));
+  }
 }
 
 let review = new Review();
@@ -45,4 +51,3 @@ handleClick = () => {
   console.log("click", id);
   review.fetchNextReview();
 };
-console.log(review);

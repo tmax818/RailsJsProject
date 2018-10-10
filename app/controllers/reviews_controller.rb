@@ -19,6 +19,10 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    respond_to do |format|
+      format.html {render :new}
+      format.json {render json: @review}
+    end
   end
 
   def edit
