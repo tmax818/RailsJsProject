@@ -1,6 +1,6 @@
 <%= provide(:title, "New Book") %>
 
-<!-- <h1>New Book</h1>
+<h1>New Book</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @book do |f| %>
@@ -25,25 +25,4 @@
     <%= f.submit "Create Book", class: "btn btn-primary" %>
     <% end %>
   </div>
-</div> -->
-
-<hr>
-    <%= javascript_include_tag 'newBook'%>
-<h1>New Book</h1>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <form id="book" onsubmit="myFunc()">
-      <label for="title">Title</label>
-      <input type="text" id="title" >
-      <label for="title">Author First</label>
-      <input type="text" id="first" value="">
-      <label for="title">Author Last</label>
-      <input type="text" id="last" value="">
-      <label for="title">Review</label>
-      <input type="text" id="review" value="">
-      <input type="submit" value="Create Book" class="btn btn-primary">
-    </form>
-  </div>
 </div>
-
-<div id='new'></div>
