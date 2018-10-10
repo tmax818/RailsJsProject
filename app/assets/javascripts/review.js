@@ -29,8 +29,20 @@ class Review {
     <p>${review.contents}</p>
     `;
   }
+
+  fetchNextReview() {
+    fetch(`http://localhost:3000/reviews/${id}.json`)
+      .then(res => res.json())
+      .then(json => this.createReview(json));
+  }
 }
 
 let review = new Review();
 review.fetchReview();
+
+handleClick = () => {
+  id++;
+  console.log("click", id);
+  review.fetchNextReview();
+};
 console.log(review);

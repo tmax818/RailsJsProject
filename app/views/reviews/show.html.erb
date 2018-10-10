@@ -1,4 +1,5 @@
 <%= provide(:title, "#{@review.book.title}") %>
+    <%= javascript_include_tag 'review'%>
 
 <h3><%= link_to @review.book.title, book_path(@review.book.id) %> By: <%= @review.book.author_first %> <%= @review.book.author_last %></h3>
 <h4>Review By: <%= @review.user.name %></h4>
@@ -7,8 +8,10 @@
 <%= link_to "Edit Review", edit_review_path(@review.id), class: "btn btn-primary" %>
 <% end %>
 <br>
+<hr>
+<h4>Review with JavaScript</h4>
 <br>
-    <%= javascript_include_tag 'review'%>
+
  <div id="review"></div>
  <button class="btn btn-primary" name="button">Edit Review</button>
- <button class="btn btn-primary" name="button">Next Review</button>
+ <button onclick="handleClick()" class="btn btn-primary" name="button">Next Review</button>
