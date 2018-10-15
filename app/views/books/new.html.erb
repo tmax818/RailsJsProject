@@ -1,6 +1,6 @@
 <%= provide(:title, "New Book") %>
 
-<h1>New Book</h1>
+<!-- <h1>New Book</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @book do |f| %>
@@ -25,4 +25,46 @@
     <%= f.submit "Create Book", class: "btn btn-primary" %>
     <% end %>
   </div>
+</div> -->
+
+<hr>
+
+<h1>New Book</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <form id="book-form" action="index.html" method="post">
+      <label for="">Title</label>
+      <input type="text" name="title" value="">
+      <label for="">Author first</label>
+      <input type="text" name="author-first" value="">
+      <label for="">Author last</label>
+      <input type="text" name="author-last" value="">
+      <label for="">Review</label>
+      <input type="text_area" name="review" value="">
+      <input type="submit" name="" value="Create Book" class="btn btn-primary" >
+    </form>
+  </div>
 </div>
+
+<script type="text/javascript">
+
+  class NewBook {
+    constructor(title, author_first, author_last, review) {
+      this.title = title,
+      this.author_first = author_first,
+      this.author_last = author_last,
+      this.review = review
+    }
+  }
+  let form = document.getElementById('book-form')
+
+  form.addEventListener('submit', e => {
+    let title = form.elements['title']
+    let author_first = form.elements['author-first']
+    let author_last = form.elements['author-last']
+    let review = form.elements['review']
+    let book = new NewBook(title.value, author_first.value, author_last.value, review.value)
+    e.preventDefault();
+    console.log(book)
+  })
+</script>
