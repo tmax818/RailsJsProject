@@ -1,5 +1,5 @@
 <%= provide(:title, "New Book") %>
-
+<%= javascript_include_tag 'newBook'%>
 <!-- <h1>New Book</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -48,14 +48,7 @@
 
 <script type="text/javascript">
 
-  class NewBook {
-    constructor(title, author_first, author_last, review) {
-      this.title = title,
-      this.author_first = author_first,
-      this.author_last = author_last,
-      this.review = review
-    }
-  }
+
   let form = document.getElementById('book-form')
 
   form.addEventListener('submit', e => {
@@ -65,6 +58,7 @@
     let review = form.elements['review']
     let book = new NewBook(title.value, author_first.value, author_last.value, review.value)
     e.preventDefault();
+    book.hello();
     console.log(book)
   })
 </script>
