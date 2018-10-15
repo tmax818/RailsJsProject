@@ -33,7 +33,7 @@ gem 'active_model_serializers'
 gem 'omniauth', '~> 1.8', '>= 1.8.1'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
+gem 'rack-cors', require: 'rack/cors'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

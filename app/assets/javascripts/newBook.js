@@ -6,7 +6,23 @@ class NewBook {
       (this.review = review);
   }
 
-  hello() {
-    console.log("inside hello");
+  postBook(book) {
+    console.log(book);
+    let url = `http://localhost:3000/books`;
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(book),
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": Rails.csrfToken()
+      },
+      credentials: "same-origin"
+    })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        console.log(data);
+      });
   }
 }

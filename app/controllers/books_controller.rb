@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+#skip_before_action :verify_authenticity_token
 
   def index
     if params[:user_id]
@@ -21,7 +21,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.create(book_params)
-    @book.reviews.last.user = current_user
+    #@book.reviews.last.user = current_user
     if @book.save
       redirect_to @book
     else

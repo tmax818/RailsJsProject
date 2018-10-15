@@ -58,7 +58,6 @@
     let review = form.elements['review']
     let book = new NewBook(title.value, author_first.value, author_last.value, review.value)
     e.preventDefault();
-    book.hello();
-    console.log(book)
+    book.postBook(book);
   })
 </script>
