@@ -39,8 +39,8 @@
       <input type="text" name="author-first" value="">
       <label for="">Author last</label>
       <input type="text" name="author-last" value="">
-      <!-- <label for="">Review</label>
-      <input type="text_area" name="review" value=""> -->
+      <label for="">Review</label>
+      <input type="text_area" name="review" value="">
       <input type="submit" name="" value="Create Book" class="btn btn-primary" >
     </form>
   </div>
@@ -60,9 +60,9 @@
     let title = form.elements['title']
     let author_first = form.elements['author-first']
     let author_last = form.elements['author-last']
-    //let review = form.elements['review']
+    let review = form.elements['review']
     let book = new NewBook(title.value, author_first.value, author_last.value)
-    book.postBook(book);
+    book.postBook(book, review.value);
     book.displayBook()
   })
 </script>

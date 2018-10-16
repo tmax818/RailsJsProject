@@ -5,7 +5,8 @@ class NewBook {
     this.author_last = author_last;
   }
 
-  postBook(book) {
+  postBook(book, review) {
+    console.log(review);
     let url = `http://localhost:3000/books`;
     fetch(url, {
       method: "POST",
@@ -17,7 +18,27 @@ class NewBook {
       credentials: "same-origin"
     })
       .then(x => x.json())
-      .then(x => this.displayBook(x));
+      .then(x => {
+        console.log(x.id);
+        this.displayBook(x);
+        this.addReview(x.id, review);
+      });
+  }
+
+  addReview(book, review) {
+    let url = "http://localhost:3000/reviews";
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        content: review,
+        book_id: book
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": Rails.csrfToken()
+      },
+      credentials: "same-origin"
+    });
   }
 
   displayBook(book) {
