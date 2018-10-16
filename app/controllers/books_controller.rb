@@ -21,12 +21,13 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.create(book_params)
+    render json: @book
     #@book.reviews.last.user = current_user
-    if @book.save
-      redirect_to @book
-    else
-      render :new
-    end
+    # if @book.save
+    #   redirect_to @book
+    # else
+    #   render :new
+    # end
   end
 
   def show

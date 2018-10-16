@@ -25,9 +25,9 @@
     <%= f.submit "Create Book", class: "btn btn-primary" %>
     <% end %>
   </div>
-</div> -->
+</div>
 
-<hr>
+<hr> -->
 
 <h1>New Book</h1>
 <div class="row">
@@ -39,25 +39,30 @@
       <input type="text" name="author-first" value="">
       <label for="">Author last</label>
       <input type="text" name="author-last" value="">
-      <label for="">Review</label>
-      <input type="text_area" name="review" value="">
+      <!-- <label for="">Review</label>
+      <input type="text_area" name="review" value=""> -->
       <input type="submit" name="" value="Create Book" class="btn btn-primary" >
     </form>
   </div>
 </div>
 
+<div id="new-book">
+
+</div>
+
 <script type="text/javascript">
 
-
+  let div = document.getElementById('new-book')
   let form = document.getElementById('book-form')
 
   form.addEventListener('submit', e => {
+    e.preventDefault();
     let title = form.elements['title']
     let author_first = form.elements['author-first']
     let author_last = form.elements['author-last']
-    let review = form.elements['review']
-    let book = new NewBook(title.value, author_first.value, author_last.value, review.value)
-    e.preventDefault();
+    //let review = form.elements['review']
+    let book = new NewBook(title.value, author_first.value, author_last.value)
     book.postBook(book);
+    book.displayBook()
   })
 </script>
