@@ -1,12 +1,11 @@
 class NewBook {
-  constructor(title, author_first, author_last) {
+  constructor(title, authorFirst, authorLast) {
     this.title = title;
-    this.author_first = author_first;
-    this.author_last = author_last;
+    this.author_first = authorFirst;
+    this.author_last = authorLast;
   }
 
   postBook(book, review) {
-    console.log(review);
     let url = `http://localhost:3000/books`;
     fetch(url, {
       method: "POST",
@@ -17,16 +16,16 @@ class NewBook {
       },
       credentials: "same-origin"
     })
-      .then(x => x.json())
-      .then(x => {
-        console.log(x.id);
-        this.displayBook(x);
-        this.addReview(x.id, review);
+      .then(res => res.json())
+      .then(book => {
+        console.log(book.id);
+        this.displayBook(book);
+        this.addReview(book.id, review);
       });
   }
 
   addReview(book, review) {
-    let url = "http://localhost:3000/reviews";
+    const url = "http://localhost:3000/reviews";
     fetch(url, {
       method: "POST",
       body: JSON.stringify({
