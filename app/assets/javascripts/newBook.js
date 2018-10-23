@@ -6,7 +6,7 @@ class NewBook {
   }
 
   postBook(book, review) {
-    let url = `http://localhost:3000/books`;
+    const url = `http://localhost:3000/books`;
     fetch(url, {
       method: "POST",
       body: JSON.stringify(book),
@@ -18,7 +18,6 @@ class NewBook {
     })
       .then(res => res.json())
       .then(book => {
-        console.log(book.id);
         this.displayBook(book);
         this.addReview(book.id, review);
       });

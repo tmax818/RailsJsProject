@@ -1,5 +1,6 @@
-var id = window.location.href.split("/").pop();
+let id = window.location.href.split("/").pop();
 console.log(id);
+let length = 10000;
 
 class Review {
   constructor(id, contents, user, book, authorFirst, authorLast) {
@@ -30,24 +31,34 @@ class Review {
     `;
   }
 
-  fetchNextReview() {
+  fetchNextReview(id) {
     fetch(`http://localhost:3000/reviews/${id}.json`)
       .then(res => res.json())
       .then(json => this.createReview(json));
   }
 
-  fetchLength() {
+  fetchLength(id) {
     fetch(`http://localhost:3000/reviews.json`)
       .then(res => res.json())
-      .then(json => console.log(json.length));
+      .then(json => json.length)
+      .then(x => (length = x));
+    length > id ? id : (id = 0);
+    return id;
   }
+
+  // checkLength(id) {
+  //   console.log(id);
+  //   console.log(this.fetchLength());
+  // }
 }
 
 let review = new Review();
 review.fetchReview();
 
-handleClick = () => {
+handleclick = () => {
   id++;
-  console.log("click", id);
-  review.fetchNextReview();
+  console.log(id);
+  review.fetchNextReview(id);
+  id = review.fetchLength(id);
+  console.log(id);
 };
