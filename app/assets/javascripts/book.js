@@ -1,9 +1,9 @@
 class Book {
-  constructor(id, title, author_first, author_last) {
+  constructor(id, title, authorFirst, authorLast) {
     this.id = id;
     this.title = title;
-    this.author_first = author_first;
-    this.author_last = author_last;
+    this.authorFirst = authorFirst;
+    this.authorLast = authorLast;
   }
 
   fetchBooks() {
@@ -14,15 +14,17 @@ class Book {
 
   createBookList(data) {
     var books = [];
-    data.forEach(d =>
-      books.push(new Book(d.id, d.title, d.author_first, d.author_last))
+    data.forEach(book =>
+      books.push(
+        new Book(book.id, book.title, book.authorFirst, book.authorLast)
+      )
     );
     books.forEach(book => {
       document.getElementById("books").innerHTML += `
       <ul>
         <li><a href="/books/${book.id}">${book.title}</a> By:${
-        book.author_first
-      } ${book.author_last} </li>
+        book.authorFirst
+      } ${book.authorLast} </li>
         </ul>
       `;
     });

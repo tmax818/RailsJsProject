@@ -1,11 +1,11 @@
 var id = window.location.href.split("/")[4];
 
 class Books {
-  constructor(id, title, author_first, author_last) {
+  constructor(id, title, authorFirst, authorLast) {
     this.id = id;
     this.title = title;
-    this.author_first = author_first;
-    this.author_last = author_last;
+    this.authorFirst = authorFirst;
+    this.authorLast = authorLast;
   }
 
   fetchBooks() {
@@ -16,8 +16,10 @@ class Books {
 
   createBookList(data) {
     var books = [];
-    data.forEach(d =>
-      books.push(new Books(d.id, d.title, d.author_first, d.author_last))
+    data.forEach(book =>
+      books.push(
+        new Books(book.id, book.title, book.author_first, book.author_last)
+      )
     );
     books.forEach(book => {
       document.getElementById("books").innerHTML += `
@@ -28,8 +30,8 @@ class Books {
       </div>
       <div class="col-md-8 well">
         <h4><a href="/books/${book.id}">${book.title}</a> By: ${
-        book.author_first
-      } ${book.author_last}</h4>
+        book.authorFirst
+      } ${book.authorLast}</h4>
       </div>
     </div>
     `;
