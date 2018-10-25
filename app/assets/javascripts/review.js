@@ -14,7 +14,9 @@ class Review {
   fetchReview() {
     fetch(`http://localhost:3000/reviews/${id}.json`)
       .then(res => res.json())
-      .then(json => this.createReview(json));
+      .then(json => {
+        this.createReview(json);
+      });
   }
 
   createReview(data) {
@@ -31,6 +33,23 @@ class Review {
     `;
   }
 
+  fetchUserReviews() {
+    fetch(`http://localhost:3000/users/${id}.json`)
+      .then(res => res.json())
+      .then(json => this.showUserReviews(json));
+  }
+
+  showUserReviews(data) {
+    ReviewsDiv.innerHTML = `<h3>${data.name}'s Reviews</h3>`;
+    data.reviews.forEach(review => {
+      ReviewsDiv.innerHTML += `
+      <ul>
+    <li><a href="/reviews/${review.id}">${review.book.title}</a></li>
+    </ul>`;
+      console.log(review.book.title);
+    });
+  }
+
   fetchNextReview(id) {
     fetch(`http://localhost:3000/reviews/${id}.json`)
       .then(res => res.json())
@@ -45,15 +64,11 @@ class Review {
     length > id ? id : (id = 0);
     return id;
   }
-
-  // checkLength(id) {
-  //   console.log(id);
-  //   console.log(this.fetchLength());
-  // }
 }
 
 let review = new Review();
 review.fetchReview();
+review.fetchUserReviews();
 
 handleclick = () => {
   id++;
@@ -62,3 +77,9 @@ handleclick = () => {
   id = review.fetchLength(id);
   console.log(id);
 };
+let ReviewsDiv;
+let ReviewDiv;
+
+document.addEventListener("DOMContentLoaded", () => {
+  ReviewsDiv = document.getElementById("user-reviews");
+});
