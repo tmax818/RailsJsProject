@@ -1,4 +1,5 @@
 <%= provide(:title, "#{@book.title}") %>
+<%= javascript_include_tag 'books'%>
 
 <h1><%= @book.title %></h1>
 <h3>By: <%= @book.author_first %> <%= @book.author_last %></h3>
@@ -13,3 +14,6 @@
 <% end %>
 
 <br>
+
+<div id="reviews-list"></div>
+<h3>All Reviews for </h3>

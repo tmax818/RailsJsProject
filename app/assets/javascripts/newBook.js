@@ -49,3 +49,22 @@ class NewBook {
     `;
   }
 }
+
+let div;
+let form;
+document.addEventListener("DOMContentLoaded", () => {
+  div = document.getElementById("new-book");
+  form = document.getElementById("book-form");
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    let title = form.elements["title"];
+    let authorFirst = form.elements["author-first"];
+    let authorLast = form.elements["author-last"];
+    let review = form.elements["review"];
+    let book = new NewBook(title.value, authorFirst.value, authorLast.value);
+    console.log(book);
+    book.postBook(book, review.value);
+    book.displayBook(book);
+  });
+});

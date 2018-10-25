@@ -1,11 +1,12 @@
 var id = window.location.href.split("/")[4];
 
 class Books {
-  constructor(id, title, authorFirst, authorLast) {
+  constructor(id, title, authorFirst, authorLast, reviews) {
     this.id = id;
     this.title = title;
     this.authorFirst = authorFirst;
     this.authorLast = authorLast;
+    this.reviews = reviews;
   }
 
   fetchBooks() {
@@ -15,14 +16,21 @@ class Books {
   }
 
   createBookList(data) {
-    var books = [];
+    let books = [];
     data.forEach(book =>
       books.push(
-        new Books(book.id, book.title, book.author_first, book.author_last)
+        new Books(
+          book.id,
+          book.title,
+          book.author_first,
+          book.author_last,
+          book.reviews
+        )
       )
     );
+    console.log(books);
     books.forEach(book => {
-      document.getElementById("books").innerHTML += `
+      booksDiv.innerHTML += `
     <div class="row">
       <div class="col-md-2">
         <section class="center">
@@ -38,6 +46,13 @@ class Books {
     });
   }
 }
-
-let book = new Books();
-book.fetchBooks();
+let booksDiv;
+let booksButton;
+document.addEventListener("DOMContentLoaded", () => {
+  let book = new Books();
+  booksButton = document.getElementById("list-books");
+  booksButton.addEventListener("click", () => {
+    book.fetchBooks();
+  });
+  booksDiv = document.getElementById("books");
+});
