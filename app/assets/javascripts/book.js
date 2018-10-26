@@ -30,6 +30,7 @@ class Book {
     });
   }
 }
-
-let book = new Book();
-book.fetchBooks();
+document.addEventListener("DOMContentLoaded", () => {
+  let book = new Book();
+  book.fetchBooks();
+});
