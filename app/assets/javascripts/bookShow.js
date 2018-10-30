@@ -1,17 +1,18 @@
-let id = window.location.href.split("/")[4];
+var id = window.location.href.split("/")[4];
+console.log(id);
 
 class ShowBook {
   constructor(input) {
     console.log(input);
-    this.id = input[0].id;
-    this.title = input[0].title;
-    this.author = `${input[0].author_first} ${input[0].author_last}`;
-    this.reviews = input[0].reviews;
+    this.id = input.id;
+    this.title = input.title;
+    this.author = `${input.author_first} ${input.author_last}`;
+    this.reviews = input.reviews;
   }
 }
 
 fetchBooks = () => {
-  fetch(`http://localhost:3000/users/${id}/books.json`)
+  fetch(`http://localhost:3000/books/${id}.json`)
     .then(res => res.json())
     .then(json => {
       let book = new ShowBook(json);
