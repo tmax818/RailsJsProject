@@ -46,6 +46,7 @@ class Books {
     });
   }
 }
+
 let booksDiv;
 let booksButton;
 document.addEventListener("DOMContentLoaded", () => {
