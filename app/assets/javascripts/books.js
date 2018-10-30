@@ -28,7 +28,6 @@ class Books {
         )
       )
     );
-    console.log(books);
     books.forEach(book => {
       booksDiv.innerHTML += `
     <div class="row">
