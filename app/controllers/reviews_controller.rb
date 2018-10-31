@@ -26,7 +26,6 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-
   end
 
   def create
@@ -40,6 +39,12 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    # @review.update(content: params[:content], book_id: params[:book_id])
+    # @review.save
+    # respond_to do |format|
+    #   format.html {render :show}
+    #   format.json {render json: @review}
+    # end
     if @review.update(review_params)
       redirect_to @review
     else
